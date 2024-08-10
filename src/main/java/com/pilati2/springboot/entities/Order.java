@@ -100,6 +100,10 @@ public class Order implements Serializable {
 	public Set<OrderItem> getItems() {
 		return items;
 	}
+	
+	public Double getTotal() {
+		return items.stream().map(e -> e.getSubTotal()).reduce(0.0, (total, e) -> total + e);
+	}
 
 	@Override
 	public int hashCode() {
